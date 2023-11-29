@@ -3,7 +3,6 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Footer from "../../Coponents/Footer/Footer";
-import TopNavbar from "../../Coponents/Header/TopNavbar";
 import ProductCard from "../../Coponents/Product/Card/ProductCard";
 
 function CategoryProducts() {
@@ -16,7 +15,6 @@ function CategoryProducts() {
   }, [categoryName, products]);
   return (
     <Fragment>
-      <TopNavbar />
       <Container>
         <div className="my-4">
           <h4 className="mb-4">

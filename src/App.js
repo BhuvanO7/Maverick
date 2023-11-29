@@ -7,9 +7,13 @@ import PageNotFound from "./app/Pages/PageNotFound";
 import AllProducts from "./app/Pages/Products/AllProducts";
 import SingleProductDetails from "./app/Pages/Products/ProductDetails/SingleProductDetails";
 import Cart from "./app/Pages/Cart";
+import TopNavbar from "./app/Coponents/Header/TopNavbar";
 function App() {
   return (
     <Fragment>
+      <div>
+        <TopNavbar/>
+      </div>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="category/:categoryName" element={<CategoryProducts />} />

@@ -82,7 +82,7 @@ const CartSlice = createSlice({
       //update the localstorage value
       localStorage.setItem("carts", JSON.stringify(state.carts));
     },
-    removeFormCart: (state, action) => {
+    removeFromCart: (state, action) => {
       //find the item from state
       const item = state.carts.find(
         (product) => product.id === action.payload.id
@@ -109,7 +109,7 @@ export const {
   addToCarts,
   increaseQuantity,
   decreaseQuantity,
-  removeFormCart,
+  removeFromCart,
 } = CartSlice.actions;
 
 //export default slice

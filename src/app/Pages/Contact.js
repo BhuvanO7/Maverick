@@ -1,54 +1,46 @@
-import React, { Fragment } from "react";
-import { Button, Card, Container, Form } from "react-bootstrap";
-import Footer from "../Coponents/Footer/Footer";
-import TopNavbar from "../Coponents/Header/TopNavbar";
+import React, { Fragment, useState } from "react";
+import axios from 'axios';
 
 function Contact() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handlePost = (e) => {
+    e.preventDefault();
+
+    axios.post('http://localhost:8080/data', { name, email, message })
+      .then((response) => {
+        const result = response.data;
+        if (result) {
+          alert("Data saved successfully");
+          setEmail("");
+          setName("");
+          setMessage('');
+        }
+      })
+      .catch((error) => {
+        console.error("POST request error:", error);
+        alert("Something went wrong when saving data.");
+      });
+  }
+
   return (
     <Fragment>
-      <TopNavbar />
-      <Container>
-        <div className="w-50 mx-auto my-5">
-          <Card>
-            <Card.Header>
-              <h3 className="text-center">Contact With Us</h3>
-            </Card.Header>
-            <Card.Body>
-              <Form>
-                <Form.Group className="mb-3">
-                  <Form.Label>Your Name</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="John Smith"
-                  ></Form.Control>
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label>Your Email</Form.Label>
-                  <Form.Control
-                    type="email"
-                    placeholder="smith@example.com"
-                  ></Form.Control>
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label>Your Message</Form.Label>
-                  <textarea
-                    className="form-control"
-                    rows={5}
-                    style={{ resize: "none" }}
-                    placeholder="Your message"
-                  ></textarea>
-                </Form.Group>
-                <div className="text-center">
-                  <Button type="submit" variant="dark">
-                    Send Message
-                  </Button>
-                </div>
-              </Form>
-            </Card.Body>
-          </Card>
-        </div>
-      </Container>
-      <Footer />
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', background: '#f0f0f0' }}>
+        <form style={{ backgroundColor: '#fff', padding: '20px', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }} onSubmit={handlePost}>
+          <label htmlFor="name">Name</label>
+          <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} style={{ width: '100%', marginBottom: '10px', padding: '8px' }} />
+
+          <label htmlFor="email">Email</label>
+          <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} style={{ width: '100%', marginBottom: '10px', padding: '8px' }} />
+
+          <label htmlFor="message">Message</label>
+          <input type="text" id="message" value={message} onChange={(e) => setMessage(e.target.value)} style={{ width: '100%', marginBottom: '20px', padding: '8px' }} />
+
+          <button type="submit" style={{ backgroundColor: '#007bff', color: '#fff', padding: '10px', borderRadius: '4px', cursor: 'pointer' }}>Submit</button>
+        </form>
+      </div>
     </Fragment>
   );
 }

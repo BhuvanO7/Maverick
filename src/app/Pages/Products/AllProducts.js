@@ -2,14 +2,13 @@ import React, { Fragment } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import Footer from "../../Coponents/Footer/Footer";
-import TopNavbar from "../../Coponents/Header/TopNavbar";
 import ProductCard from "../../Coponents/Product/Card/ProductCard";
 
 function AllProducts() {
   const { products } = useSelector((state) => state.products);
   return (
     <Fragment>
-      <TopNavbar />
+      
       <Container>
         <h4 className="mb-4">Showing Produdcts from</h4>
         <Row>

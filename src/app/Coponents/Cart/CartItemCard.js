@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import {
   increaseQuantity,
   decreaseQuantity,
-  removeFormCart,
+  removeFromCart,
 } from "../../Features/Cart/CartSlice";
 
 function CartItemCard({ item }) {
@@ -30,7 +30,7 @@ function CartItemCard({ item }) {
   //remove item form cart
   const removeItem = (e) => {
     e.preventDefault();
-    dispatch(removeFormCart(item));
+    dispatch(removeFromCart(item));
   };
   useEffect(() => {
     axios.get(`https://fakestoreapi.com/products/${item.id}`).then((res) => {

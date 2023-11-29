@@ -4,13 +4,9 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import CartItemCard from "../Coponents/Cart/CartItemCard";
 import Footer from "../Coponents/Footer/Footer";
-import TopNavbar from "../Coponents/Header/TopNavbar";
-import {
-  subTotalPrice,
-  totalPrice,
-  totalTax,
-} from "../Features/Cart/CartSelector";
+import { subTotalPrice, totalPrice, totalTax } from "../Features/Cart/CartSelector";
 import { cartState } from "../Features/Cart/CartSlice";
+import axios from 'axios';
 
 function Cart() {
   let state = useSelector((state) => state);
@@ -19,9 +15,22 @@ function Cart() {
   const tax = totalTax(state);
   const totalAmmount = totalPrice(state);
 
+  const handlePost = () => {
+    axios.post('http://localhost:5000/register', { subTotal, tax, totalAmmount })
+      .then((response) => {
+        const result = response.data;
+        if (result) {
+          alert("Data saved successfully");
+        }
+      })
+      .catch((error) => {
+        console.error("POST request error:", error);
+        alert("Something went wrong when saving data.");
+      });
+  }
+
   return (
     <Fragment>
-      <TopNavbar />
       <Container>
         <Row>
           {!carts.length && (
@@ -30,7 +39,7 @@ function Cart() {
                 You don't have any product in carts.{" "}
                 <Link to="/products" className="text-dark text-decoration-none">
                   {" "}
-                  Go for shoping{" "}
+                  Go for shopping{" "}
                 </Link>
               </h3>
             </div>
@@ -49,7 +58,7 @@ function Cart() {
           <div className="my-3">
             <Card>
               <Card.Body>
-                <div className="d-flex justify-content-around ">
+                <div className="d-flex justify-content-around">
                   <div className="w-100 align-middle">
                     <h5 className="align-middle d-inline">
                       Subtotal: ${subTotal}
@@ -64,9 +73,12 @@ function Cart() {
                     </h5>
                   </div>
                   <div className="w-100 text-center">
-                    <Button variant="dark" className="align-middle d-inline">
-                      Checkout
-                    </Button>
+                    <button
+                      onClick={handlePost}
+                      className="btn btn-primary w-30" 
+                    >
+                      Post
+                    </button>
                   </div>
                 </div>
               </Card.Body>
