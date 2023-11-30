@@ -9,7 +9,7 @@ function Footer() {
         <span>
           Copyright & Developed by{" "}
           <a href="https://www.linkedin.com/in/almamunhossain/" target="blank">
-            MAVERICKS
+            MAVERICKS.
           </a>
         </span>
       </div>
