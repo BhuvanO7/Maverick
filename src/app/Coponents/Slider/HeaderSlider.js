@@ -13,8 +13,8 @@ function HeaderSlider() {
             alt="pure pu ladies bag"
           />
           <Carousel.Caption className="bg-white">
-            <h5>Summer Collection Pure PU Ladies Shoulder Bag </h5>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <h5>Summer Collection|Ladies Shoulder Bag </h5>
+            <p>Get the best bag's collection only on maverick.</p>
             <div className="mb-3">
               <Button variant="dark">Shop Now</Button>
             </div>
@@ -28,8 +28,8 @@ function HeaderSlider() {
             alt="pure mustard oil"
           />
           <Carousel.Caption className="bg-white">
-            <h5>100% Cotton Men Blac Suits</h5>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <h5>Men's Collection</h5>
+            <p>Vibe Like Never Before.</p>
             <div className="mb-3">
               <Button variant="dark">Shop Now</Button>
             </div>
@@ -44,7 +44,7 @@ function HeaderSlider() {
           />
           <Carousel.Caption className="bg-white">
             <h5>Decorate Your Smart Kitchen</h5>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <p>Make it Actual Smart.</p>
             <div className="mb-3">
               <Button variant="dark">Shop Now</Button>
             </div>
@@ -56,3 +56,4 @@ function HeaderSlider() {
 }
 
 export default HeaderSlider;
+
